@@ -1,0 +1,278 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --button-bg: #dddddd;
+  --button-text: #000000;
+  --button-hover: #cccccc;
+  --active-glow: #444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.container {display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Digital Clock Box */
+.clock-box {
+  padding: 40px 60px;
+  background: var(--card-bg);
+  box-shadow: 0 0 30px var(--card-shadow);
+  border-radius: 16px;
+  min-width: 300px;
+  transition: 0.3s ease;
+}
+
+#clock {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+#date {
+  font-size: 1.5rem;
+}
+
+/* Analog Clock */
+.clock {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: radial-gradient(circle, #5454f5, rgb(3, 6, 167));
+  box-shadow: 0 0 105px 0px #51b1c2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* ✅ Fix center alignment */
+  margin-left: 5vh  ;
+}
+
+
+.number {
+  transform: rotate(calc(30deg * var(--n)));
+  position: absolute;
+  inset: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #5dffff;
+}
+
+.number b {
+  transform: rotate(calc(-30deg * var(--n)));
+  display: inline-block;
+  text-shadow: 0 0 3px #5dffff;
+}
+
+.hourhand, .minutehand, .secondhand {
+  --rotate: 0;
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%) rotate(calc(var(--rotate) * 1deg));
+  transform-origin: bottom;
+  border-radius: 6px;
+}
+
+.hourhand {
+  height: 100px;
+  width: 8px;
+  background: linear-gradient(#ff0000, #0101ff);
+}
+
+.minutehand {
+  height: 130px;
+  width: 6px;
+  background: linear-gradient(#ffd000, #0101ff);
+}
+
+.secondhand {
+  height: 150px;
+  width: 4px;
+  background: linear-gradient(#e100ff, #0101ff);
+}
+
+.centerdot {
+  height: 16px;
+  width: 16px;
+  background-color: #d1ddeb;
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* Buttons */
+.theme-buttons {
+  margin-top: 30px;
+}
+
+.theme-buttons button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.theme-buttons button:hover {
+  background-color: var(--button-hover);
+}
+
+.theme-buttons .active {
+  outline: 2px solid var(--active-glow);
+}
+
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .clock-box {
+    padding: 25px 30px;
+    min-width: 250px;
+  }
+
+  #clock {
+    font-size: 2.5rem;
+  }
+
+  #date {
+    font-size: 1.2rem;
+  }
+
+  .clock {
+    width: 280px;
+    height: 280px;
+  }
+
+  .number {
+    font-size: 1.1rem;
+  }
+
+  .hourhand {
+    height: 70px;
+    width: 6px;
+  }
+
+  .minutehand {
+    height: 90px;
+    width: 4px;
+  }
+
+  .secondhand {
+    height: 110px;
+    width: 2px;
+  }
+
+  .centerdot {
+    height: 10px;
+    width: 10px;
+  }
+
+  .theme-buttons button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+  .clock-box {
+    padding: 40px 60px;
+  }
+
+  #clock {
+    font-size: 3.5rem;
+  }
+
+  #date {
+    font-size: 1.4rem;
+  }
+
+  .clock {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+ @media (min-width: 1920px) {
+  .title {
+    font-size: 4rem;
+  }
+
+  .clock-box {
+    padding: 60px 90px;
+  }
+
+  #clock {
+    font-size: 5rem;
+  }
+
+  #date {
+    font-size: 2rem;
+  }
+
+  .clock {
+    width: 550px;
+    height: 550px;
+  }
+
+  .number {
+    font-size: 2rem;
+  }
+
+  .hourhand {
+    height: 160px;
+    width: 10px;
+  }
+
+  .minutehand {
+    height: 210px;
+    width: 8px;
+  }
+
+  .secondhand {
+    height: 250px;
+    width: 6px;
+  }
+
+  .centerdot {
+    height: 18px;
+    width: 18px;
+  }
+
+  .theme-buttons button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+  }
+} 
