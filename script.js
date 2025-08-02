@@ -7,7 +7,6 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// Theme switching and visibility toggle
 const buttons = document.querySelectorAll('.theme-buttons button');
 const digitalBox = document.getElementById('digitalBox');
 const analogClock = document.getElementById('analogClock');
@@ -19,25 +18,36 @@ buttons.forEach(button => {
 
     const theme = button.id;
 
+    //line 23-29 or use 30-37 Same will happen
+
+    // if (theme === 'aero') {
+    //   digitalBox.style.display = 'none';
+    //   analogClock.style.display = 'flex';
+    // } else {
+    //   digitalBox.style.display = 'grid';
+    //   analogClock.style.display = 'none';
+    // }
     if (theme === 'aero') {
-      digitalBox.style.display = 'none';
-      analogClock.style.display = 'flex';
+      digitalBox.classList.add('hidden');
+      analogClock.classList.remove('hidden');
+
     } else {
-      digitalBox.style.display = 'block';
-      analogClock.style.display = 'none';
+      digitalBox.classList.remove('hidden');
+      analogClock.classList.add('hidden');
     }
 
     switch (theme) {
       case 'light':
         applyTheme({
-          '--bg-color': '#ffffff',
+          '--bg-color': '#e6e6e6ff',
           '--text-color': '#000000',
-          '--card-bg': '#ffffff',
-          '--card-shadow': 'rgba(0, 0, 0, 0.1)',
-          '--button-bg': '#dddddd',
+          '--card-bg': '#9e9e9eff',
+          '--card-shadow': 'rgba(136, 136, 136, 0.1)',
+          '--button-bg': '#bebebeff',
           '--button-text': '#000000',
-          '--button-hover': '#cccccc',
-          '--active-glow': '#001affff',
+          '--button-hover': '#000000ff',
+          '--active-glow': '#000000ff',
+          '--text-color-hover': '#ffffff',
         });
         break;
       case 'dark':
@@ -48,32 +58,35 @@ buttons.forEach(button => {
           '--card-shadow': 'rgba(255, 255, 255, 0.1)',
           '--button-bg': '#2c2c2c',
           '--button-text': '#ffffff',
-          '--button-hover': '#3d3d3d',
-          '--active-glow': '#00ffcc',
+          '--button-hover': '#d3d3d3ff',
+          '--active-glow': '#ffffffff',
+          '--text-color-hover': '#000000ff',
         });
         break;
       case 'neon':
         applyTheme({
           '--bg-color': '#000000',
-          '--text-color': '#00ff00',
+          '--text-color': '#ff00aaff',
           '--card-bg': '#000000',
-          '--card-shadow': 'rgba(0, 255, 0, 1)',
-          '--button-bg': '#222222',
-          '--button-text': '#39ff14',
+          '--card-shadow': 'rgba(247, 0, 255, 1)',
+          '--button-bg': '#2c2e24ff',
+          '--button-text': '#ff00eaff',
           '--button-hover': '#111111',
           '--active-glow': '#ff00ff',
+          '--text-color-hover': '#2bff00ff',
         });
         break;
       case 'aero':
         applyTheme({
           '--bg-color': '#00155cff',
-          '--text-color': '#0f8ef0ff',
+          '--text-color': '#33a7ffff',
           '--card-bg': '#ffffff',
           '--card-shadow': 'rgba(1, 87, 155, 0.2)',
           '--button-bg': '#bbdefb',
-          '--button-text': '#01579b',
-          '--button-hover': '#90caf9',
+          '--button-text': '#001275ff',
+          '--button-hover': '#4490b9ff',
           '--active-glow': '#0288d1',
+          '--text-color-hover': '#000000ff',
         });
         break;
     }
@@ -87,6 +100,8 @@ function applyTheme(vars) {
 }
 
 // Analog Clock Rotation
+setInterval(clocktick, 1000);
+clocktick();
 function clocktick() {
   const date = new Date();
   const seconds = date.getSeconds() / 60;
@@ -104,9 +119,7 @@ function rotateClockHand(id, rotation) {
     element.style.setProperty('--rotate', rotation * 360);
   }
 }
-setInterval(clocktick, 1000);
-clocktick();
 
-// ✅ Apply light theme by default on load
+
 document.getElementById('light').click();
 

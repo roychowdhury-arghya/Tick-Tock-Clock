@@ -29,10 +29,12 @@ body {
 
 .title {
   font-size: 3rem;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
+  margin: 0 auto;
 }
 
-.container {display: flex;
+.container {
+  display: flex;
   text-align: center;
   flex-direction: column;
   justify-content: center;
@@ -42,7 +44,7 @@ body {
 .clock-box {
   padding: 40px 60px;
   background: var(--card-bg);
-  box-shadow: 0 0 30px var(--card-shadow);
+  box-shadow: 0 0 50px var(--card-shadow);
   border-radius: 16px;
   min-width: 300px;
   transition: 0.3s ease;
@@ -69,9 +71,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  /* ✅ Fix center alignment */
-  margin-left: 5vh  ;
+  margin: 0 auto;
 }
 
 
@@ -90,7 +90,9 @@ body {
   text-shadow: 0 0 3px #5dffff;
 }
 
-.hourhand, .minutehand, .secondhand {
+.hourhand,
+.minutehand,
+.secondhand {
   --rotate: 0;
   position: absolute;
   bottom: 50%;
@@ -145,6 +147,7 @@ body {
 
 .theme-buttons button:hover {
   background-color: var(--button-hover);
+  color: var(--text-color-hover);
 }
 
 .theme-buttons .active {
@@ -174,6 +177,7 @@ body {
   .clock {
     width: 280px;
     height: 280px;
+    margin: 0 auto;
   }
 
   .number {
@@ -225,7 +229,7 @@ body {
   }
 }
 
- @media (min-width: 1920px) {
+@media (min-width: 1920px) {
   .title {
     font-size: 4rem;
   }
@@ -275,4 +279,8 @@ body {
     padding: 14px 28px;
     font-size: 1.1rem;
   }
-} 
+}
+
+.hidden {
+  display: none;
+}
